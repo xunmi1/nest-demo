@@ -18,7 +18,9 @@ module.exports = {
     '@typescript-eslint',
     'jest',
   ],
-  rules: {},
+  rules: {
+    'max-len': ['warn', { code: 120, tabWidth: 2 }],
+  },
   overrides: [
     {
       'files': ['*.spec.ts'],

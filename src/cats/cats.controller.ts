@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from './cat.dto';
 
 @Controller('cats')
 export class CatsController {
-  constructor(private readonly catsService: CatsService) {};
+  constructor(private readonly catsService: CatsService) {}
 
   // adds a cats
   @Post()
@@ -16,5 +16,10 @@ export class CatsController {
   @Get()
   async getAll() {
     return this.catsService.findAll();
+  }
+
+  @Get('/prevent')
+  prevent() {
+    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
   }
 }

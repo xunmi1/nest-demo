@@ -1,5 +1,7 @@
-export interface Cat {
-  readonly name: string;
-  readonly age: number;
-  readonly breed: string;
+export class Cat {
+  constructor(
+    private readonly name: string,
+    private readonly age: number,
+    private readonly breed: string,
+  ) {}
 }
