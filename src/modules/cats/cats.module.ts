@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { APP_FILTER } from '@nestjs/core';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
-import { HttpExceptionFilter } from '../common/filters/http-exception.filter';
+import { HttpExceptionFilter } from '../../common/filters';
 
 @Module({
   controllers: [CatsController],

@@ -7,7 +7,7 @@ import { Request, Response } from 'express';
 export class HttpExceptionFilter implements ExceptionFilter {
   /**
    * @param exception 当前正在处理的异常对象
-   * @param host 根据应用程序的类型包含不同的参数数组, 为任何执行上下文访问适当的基础参数
+   * @param host 根据应用程序的类型包含不同的参数数组, 对任何执行上下文的基础参数进行适配
    */
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
