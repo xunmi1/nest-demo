@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { CatsService } from './cats.service';
-import { Cat } from './cat.dto';
+import { CatDto } from './cat.dto';
 
 @Controller('cats')
 export class CatsController {
@@ -8,7 +8,7 @@ export class CatsController {
 
   // adds a cats
   @Post()
-  async create(@Body() cat: Cat) {
+  async create(@Body() cat: CatDto) {
     this.catsService.create(cat);
     return 'this action adds a cats';
   }

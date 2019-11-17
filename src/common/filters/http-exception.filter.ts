@@ -14,14 +14,21 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
+    const content = HttpExceptionFilter.transformResponse(exception);
+
     // 使用 `express` 的 `response` 对象处理异常的响应结果
     response
       .status(status)
       .json({
-        statusCode: status,
+        ...content,
         timestamp: Date.now(),
         path: request.url,
-        message: exception.getResponse(),
       });
+  }
+
+  private static transformResponse(exception: HttpException) {
+    const result = exception.getResponse();
+    if (typeof result === 'string') return { message:  result };
+    return result;
   }
 }

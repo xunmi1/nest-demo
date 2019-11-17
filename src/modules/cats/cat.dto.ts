@@ -1,7 +1,13 @@
-export class Cat {
-  constructor(
-    private readonly name: string,
-    private readonly age: number,
-    private readonly breed: string,
-  ) {}
+import { IsInt, IsString, IsNotEmpty } from 'class-validator';
+
+export class CatDto {
+  @IsString()
+  @IsNotEmpty()
+  private readonly name: string;
+
+  @IsInt()
+  private readonly age: number;
+
+  @IsString()
+  private readonly breed: string;
 }
