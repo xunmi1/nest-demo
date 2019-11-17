@@ -8,7 +8,7 @@
     "build": "rimraf dist && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start:dev": "nest start --watch --webpack",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint --fix --ext .js,.ts src/",
@@ -42,9 +42,12 @@
     "rimraf": "^3.0.0",
     "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.1",
     "ts-node": "^8.5.2",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "jest": {
     "moduleFileExtensions": [
