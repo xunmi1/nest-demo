@@ -16,7 +16,7 @@ import { CatsController } from './modules/cats/cats.controller';
   controllers: [AppController],
   providers: [
     AppService,
-    // 或者对 `Service` 类使用 `@UseFilters()` 装饰器(需手动实例化)，这里是由框架来实例化并启用依赖注入
+    // 或者对 `Service` 类使用 `@UseFilters()` 装饰器，这里是由框架来实例化并启用依赖注入
     { provide: APP_FILTER, useClass: HttpExceptionFilter },
     // 或者使用 `@UsePipes()` | `app.useGlobalPipes()`
     { provide: APP_PIPE, useClass: GlobalPipe },

@@ -6,11 +6,14 @@ export class CatsService {
   private readonly cats: CatDto[] = [];
 
   create(cat: CatDto) {
-    console.log(cat);
     this.cats.push(cat);
   }
 
   findAll() {
-    return this.cats;
+    return Promise.resolve(this.cats);
+  }
+
+  findOne(id: number): Promise<CatDto | undefined> {
+    return Promise.resolve(this.cats[id - 1]);
   }
 }
