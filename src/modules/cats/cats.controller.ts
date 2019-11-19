@@ -1,4 +1,5 @@
 import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Post, UsePipes } from '@nestjs/common';
+import { Roles } from 'src/common';
 import { CatsService } from './cats.service';
 import { CatDto } from './cat.dto';
 
@@ -8,17 +9,17 @@ export class CatsController {
 
   // adds a cats
   @Post()
+  @Roles('admin')
   async create(@Body() cat: CatDto) {
     this.catsService.create(cat);
     return {
       data: cat,
-      message: 'this action adds a cats'
+      message: 'this action adds a cats',
     };
   }
 
   @Get()
   async getAll() {
-    console.log(1);
     return await this.catsService.findAll();
   }
 
@@ -27,7 +28,6 @@ export class CatsController {
   @UsePipes(ParseIntPipe)
   async findOne(@Param('id') id: number) {
     const cat = await this.catsService.findOne(id);
-    console.log(cat);
     if (!cat) {
       throw new NotFoundException();
     }

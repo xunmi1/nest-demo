@@ -9,7 +9,6 @@ module.exports = function(options) {
   return {
     ...options,
     entry: [HOT_PATH, './src/main.ts'],
-    mode: 'development',
     watch: true,
     externals: [
       nodeExternals({ whitelist: [HOT_PATH] }),

@@ -9,13 +9,11 @@ export class CatDto {
   // 必填且限制长度
   @IsDefined()
   @Length(4, 10)
-  set name(name: string) {
-    console.log(name);
-  }
+  readonly name: string;
 
   // 可选，如果存在该属性，则必须是 `number`
   @IsInt()
-  private readonly age: number;
+  readonly age: number;
 
   // 可选，如果存在该属性，则需要验证长度
   @Length(2, 20)
