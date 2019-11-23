@@ -20,8 +20,12 @@ export class AuthService {
   }
 
   async login<T extends Pick<User, 'username' | 'userId'>>(user: T) {
-    const payload: SignOptions = { username: user.username, sub: user.userId };
-    const accessToken = await this.jwtService.signAsync(payload);
+    const payload = { username: user.username, sub: user.userId };
+    const accessToken = await this.sign(payload);
     return { accessToken };
+  }
+
+  async sign(payload: SignOptions) {
+    return this.jwtService.signAsync(payload);
   }
 }

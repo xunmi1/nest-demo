@@ -1,9 +1,12 @@
-import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Post, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Post, UseGuards, UsePipes } from '@nestjs/common';
 import { Roles } from 'src/common';
 import { CatsService } from './cats.service';
 import { CatDto } from './cat.dto';
+import { AuthGuard } from '@nestjs/passport';
+
 
 @Controller('cats')
+@UseGuards(AuthGuard())
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
