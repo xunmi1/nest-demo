@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { INestApplication } from '@nestjs/common';
 import { AppModule } from './app.module';
-import { GlobalPipe, HttpExceptionFilter, RolesGuard } from './common';
+import { GlobalPipe, HttpExceptionFilter } from './common';
 
 declare const module: {
   hot?: {
@@ -22,7 +22,6 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   app.useGlobalFilters(new HttpExceptionFilter());
-  app.useGlobalGuards(new RolesGuard());
   app.useGlobalPipes(new GlobalPipe());
 
   await app.listen(3000);
